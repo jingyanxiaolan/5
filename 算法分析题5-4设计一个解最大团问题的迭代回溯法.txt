@@ -1,0 +1,33 @@
+//算法分析题5-4设计一个解最大团问题的迭代回溯法
+ static void iterClique()
+{
+for(int i=0;i<=n;i++)x[i]=0;
+int i=1;
+while(true){
+while(i<=n && ok(i)) {
+x[i++]=1;
+cn++;}
+if(i>=n){
+for(int j=1;j<=n;j++)
+bestx[j]=x[j];
+bestn=cn;
+}
+else x[i++]=0;
+while(cn+n-i<=bestn) {
+i--;
+while(i>0 && x[i]==0)
+i--;
+if(i==0) return;
+x[i++]=0;
+cn--;}}}
+static boolean ok(int i)
+{
+for(int j=1;j<i;j++)
+if(x[j]>0 && a[i][j]==0)
+return false;
+return ture;}
+public static int InterClique(){
+cn=0;bestn=0;
+iterClique();
+return bestn;}
+
